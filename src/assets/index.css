@@ -4,30 +4,37 @@
   --font-display: "Fraunces", serif;
   --font-sans: "Public Sans", system-ui, sans-serif;
 
-  --color-ink: #1c2321;
-  --color-muted: #5b6660;
-  --color-bg: #f4f5f3;
-  --color-surface: #ffffff;
-  --color-border: #e2e4df;
-  --color-primary: #2f5d50;
-  --color-primary-dark: #24473d;
-  --color-primary-soft: #e7efec;
-  --color-danger: #b3402d;
-  --color-danger-soft: #f6e6e2;
+  /* Paleta Oscura Elegante */
+  --color-ink: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-bg: #0b0f0e;
+  --color-surface: #131b18;
+  --color-border: #22302b;
+  --color-primary: #2dd4bf;
+  --color-primary-dark: #14b8a6;
+  --color-primary-soft: rgba(45, 212, 191, 0.1);
+  --color-danger: #f87171;
+  --color-danger-soft: rgba(248, 113, 113, 0.1);
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
-/* Foco visible para navegación por teclado */
+::selection {
+  background-color: var(--color-primary);
+  color: #0b0f0e;
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-soft), 0 0 0 1px var(--color-primary);
 }

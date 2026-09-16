@@ -18,41 +18,55 @@ export default function EventCard({ evento, alEliminar }) {
   }
 
   return (
-    <li className="flex flex-col gap-3 rounded-xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
-      <div>
-        <p className="font-display text-lg font-semibold text-ink">{evento.nombre}</p>
-        <p className="text-sm text-muted">
-          {formatearFecha(evento.fecha)} · {formatearHora(evento.hora)}
-          {evento.lugar ? ` · ${evento.lugar}` : ''}
-        </p>
+    <li className="group flex flex-col gap-3 rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary/50 sm:flex-row sm:items-center sm:justify-between">
+      <div className="space-y-1">
+        {/* Título limpio y directo */}
+        <h3 className="text-base font-semibold text-ink">
+          {evento.nombre}
+        </h3>
+        
+        {/* Metadatos con estilo técnico/monoespaciado */}
+        <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-muted">
+          <span className="text-primary">
+            [{formatearFecha(evento.fecha)} @ {formatearHora(evento.hora)}]
+          </span>
+          {evento.lugar && (
+            <span>
+              dir: {evento.lugar}
+            </span>
+          )}
+        </div>
+
         {evento.descripcion && (
-          <p className="mt-1 max-w-lg text-sm text-ink/80">{evento.descripcion}</p>
+          <p className="text-xs text-muted/90 pt-0.5 line-clamp-1">
+            {evento.descripcion}
+          </p>
         )}
       </div>
 
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="flex shrink-0 items-center gap-2 pt-2 sm:pt-0 border-t border-border/40 sm:border-t-0">
         <Link
           to={`/dashboard/editar/${evento.id}`}
-          className="rounded-full border border-border px-4 py-2 text-sm font-medium text-ink hover:bg-bg"
+          className="rounded-md border border-border bg-surface px-3 py-1.5 text-xs font-medium text-ink hover:bg-bg hover:border-ink/30 transition-colors"
         >
           Editar
         </Link>
 
         {confirmando ? (
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted">¿Eliminar?</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-danger">¿Borrar?</span>
             <button
               type="button"
               onClick={manejarEliminar}
               disabled={eliminando}
-              className="rounded-full bg-danger px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+              className="rounded-md bg-danger px-2.5 py-1.5 text-xs font-medium text-white disabled:opacity-50"
             >
-              {eliminando ? 'Eliminando…' : 'Sí'}
+              {eliminando ? '...' : 'Sí'}
             </button>
             <button
               type="button"
               onClick={() => setConfirmando(false)}
-              className="rounded-full border border-border px-4 py-2 text-sm font-medium text-ink"
+              className="rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-ink hover:bg-bg"
             >
               No
             </button>
@@ -61,7 +75,7 @@ export default function EventCard({ evento, alEliminar }) {
           <button
             type="button"
             onClick={() => setConfirmando(true)}
-            className="rounded-full border border-border px-4 py-2 text-sm font-medium text-danger hover:bg-danger-soft"
+            className="rounded-md border border-transparent px-3 py-1.5 text-xs font-medium text-danger hover:bg-danger-soft transition-colors"
           >
             Eliminar
           </button>

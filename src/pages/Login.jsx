@@ -88,7 +88,7 @@ export default function Login() {
         </form>
 
         <p className="mt-5 text-xs text-muted">
-          Demo del curso — usuario <code>admin</code> / contraseña <code>admin123</code>.
+          Demo del curso — usuario <code>Dainer</code> / contraseña <code>1038</code>.
         </p>
       </div>
     </div>

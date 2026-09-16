@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const CREDENCIALES_VALIDAS = {
-  usuario: 'admin',
-  clave: 'admin123',
+  usuario: 'Dainer',
+  clave: '1038',
 };
 
 const CLAVE_STORAGE = 'gestor-eventos:sesion';
